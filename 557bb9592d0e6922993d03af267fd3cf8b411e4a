@@ -1,0 +1,31 @@
+.claude-plugin/plugin.json
+  70d9ac08627e98f1 10-11
+package.json
+  70d9ac08627e98f1 28,31,34
+README.md
+  70d9ac08627e98f1 33,45,51,122
+bin/install.js
+  70d9ac08627e98f1 51-52
+.claude-plugin/marketplace.json
+  70d9ac08627e98f1 2,8,21-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "557bb9592d0e6922993d03af267fd3cf8b411e4a",
+  "prompts": {
+    "70d9ac08627e98f1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60b3d145-f594-472c-8a24-dfe210ffed6f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Pierson Marks",
+      "messages": [],
+      "total_additions": 172,
+      "total_deletions": 18,
+      "accepted_lines": 165,
+      "overriden_lines": 4
+    }
+  }
+}
