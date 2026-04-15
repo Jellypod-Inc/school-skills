@@ -1,0 +1,23 @@
+.gitignore
+  70d9ac08627e98f1 27-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "cd484795e924e454caafd13ddc25c1ec76c48718",
+  "prompts": {
+    "70d9ac08627e98f1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60b3d145-f594-472c-8a24-dfe210ffed6f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Pierson Marks",
+      "messages": [],
+      "total_additions": 162,
+      "total_deletions": 23008,
+      "accepted_lines": 162,
+      "overriden_lines": 0
+    }
+  }
+}
