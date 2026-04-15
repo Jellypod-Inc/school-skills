@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Internal design docs (specs + plans) — not shipped
+docs/superpowers/
