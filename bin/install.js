@@ -48,8 +48,8 @@ function printHelp() {
     `Skills are copied to: ${TARGET_DIR}`,
     '',
     'Alternative: install as a Claude Code plugin (recommended):',
-    '  /plugin marketplace add jellypod/school-skills',
-    '  /plugin install school-skills',
+    '  /plugin marketplace add Jellypod-Inc/school-skills',
+    '  /plugin install school-skills@jellypod',
     ''
   ];
   process.stdout.write(lines.join('\n'));

@@ -25,12 +25,12 @@
   ],
   "author": "Jellypod <contact@jellypod.com>",
   "license": "MIT",
-  "homepage": "https://github.com/jellypod/school-skills",
+  "homepage": "https://jellypod.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jellypod/school-skills.git"
+    "url": "https://github.com/Jellypod-Inc/school-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/jellypod/school-skills/issues"
+    "url": "https://github.com/Jellypod-Inc/school-skills/issues"
   }
 }

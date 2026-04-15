@@ -1,11 +1,11 @@
 {
-  "name": "school-skills",
+  "name": "jellypod",
   "owner": {
     "name": "Jellypod",
     "email": "contact@jellypod.com"
   },
   "metadata": {
-    "description": "Classroom-ready Claude Code skills for education.",
+    "description": "Jellypod's marketplace of Claude Code plugins.",
     "version": "0.1.0-alpha.2"
   },
   "plugins": [
@@ -18,8 +18,8 @@
         "name": "Jellypod",
         "email": "contact@jellypod.com"
       },
-      "homepage": "https://github.com/jellypod/school-skills",
-      "repository": "https://github.com/jellypod/school-skills",
+      "homepage": "https://jellypod.com",
+      "repository": "https://github.com/Jellypod-Inc/school-skills",
       "license": "MIT",
       "keywords": ["education", "teachers", "students", "classroom", "tutoring"],
       "category": "education",

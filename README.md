@@ -29,8 +29,8 @@ There are two ways to install School Skills. Most people should use the first on
 Inside Claude Code, type these two commands. You can literally copy-paste them.
 
 ```
-/plugin marketplace add jellypod/school-skills
-/plugin install school-skills
+/plugin marketplace add Jellypod-Inc/school-skills
+/plugin install school-skills@jellypod
 ```
 
 <!-- Screenshot: /plugin marketplace add running in Claude Code -->
@@ -42,13 +42,13 @@ That is it. All shipping skills are now available. When you ask Claude something
 **To update later:**
 
 ```
-/plugin marketplace update school-skills
+/plugin marketplace update jellypod
 ```
 
 **To remove:**
 
 ```
-/plugin uninstall school-skills
+/plugin uninstall school-skills@jellypod
 ```
 
 ### 2. Install via `npx` (alternative)
@@ -119,7 +119,7 @@ Claude will recognize when a skill fits and use it automatically.
 
 - **Claude Code** installed. See <https://claude.com/claude-code> for install instructions.
 - For the `npx` path: **Node.js 18 or newer**.
-- No other software required for the three shipping skills.
+- No other software required for the seven shipping skills.
 
 ---
 
@@ -127,7 +127,7 @@ Claude will recognize when a skill fits and use it automatically.
 
 This is an early alpha. If something is broken, confusing, or you wish a particular skill existed, please open an issue:
 
-<https://github.com/jellypod/school-skills/issues>
+<https://github.com/Jellypod-Inc/school-skills/issues>
 
 Teacher feedback is the whole point.
 
