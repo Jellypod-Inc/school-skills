@@ -1,0 +1,58 @@
+{
+  "skill": "concept-map",
+  "version": "0.1.0",
+  "judge_model": "claude-opus-4-6",
+  "cases": [
+    {
+      "id": "photosynthesis-9th-concept-map",
+      "prompt": "Concept map for photosynthesis, 9th grade.",
+      "assertions": [
+        {"type": "file_exists", "path": "concept-map.mmd"},
+        {"type": "mermaid_parses", "path": "concept-map.mmd", "description": "Mermaid syntax parses via mmdc --dry-run (or returns install-hint fallback without erroring)"},
+        {"type": "node_count", "path": "concept-map.mmd", "min": 10, "max": 25, "description": "10-25 nodes per 9-12 calibration"},
+        {"type": "edge_count", "path": "concept-map.mmd", "min": 10, "description": "At least 10 edges, most with verb/preposition labels"},
+        {"type": "contains", "path": "concept-map.mmd", "values": ["Photosynthesis", "photosynthesis"], "any": true, "description": "Root concept 'photosynthesis' present"}
+      ]
+    },
+    {
+      "id": "french-revolution-5th-mindmap",
+      "prompt": "Mind map of the French Revolution for 5th graders.",
+      "assertions": [
+        {"type": "file_exists_any", "paths": ["concept-map.mmd", "concept-map.md"], "description": "Mermaid mindmap OR Markmap file produced"},
+        {"type": "node_count", "min": 6, "max": 12, "description": "6-12 nodes per 3-5 calibration"},
+        {"type": "contains_any", "values": ["French Revolution", "french revolution"], "description": "Root is 'French Revolution'"},
+        {"type": "judge", "criterion": "Vocabulary is 5th-grade-appropriate — no college-level terms like 'ancien régime' or 'bourgeoisie' without plain-language gloss. Labels ≤ 3 words."}
+      ]
+    },
+    {
+      "id": "calculus-prereq-tree-college",
+      "prompt": "Prerequisite tree for calculus, college level.",
+      "assertions": [
+        {"type": "file_exists_any", "paths": ["concept-map.dot", "concept-map.mmd"], "description": "DOT or Mermaid prerequisite tree produced"},
+        {"type": "regex_or_contains", "patterns": ["rankdir\\s*=\\s*(TB|BT)", "graph\\s+(TD|BT)"], "description": "Hierarchical top-down or bottom-up layout"},
+        {"type": "contains_all", "values": ["algebra", "trigonometry", "calculus"], "case_insensitive": true, "description": "Includes algebra and trigonometry feeding into calculus"},
+        {"type": "judge", "criterion": "Edges flow from prerequisite concepts (algebra, trig, limits) TOWARD calculus, not the other way around. Reading the graph should answer 'what do I need before calculus?'."}
+      ]
+    },
+    {
+      "id": "chapter-excerpt-no-hallucination",
+      "prompt": "Visualize this chapter as a concept map. [pasted 500-word excerpt about cellular respiration, mitochondria, glucose breakdown, ATP, and aerobic vs. anaerobic pathways]",
+      "assertions": [
+        {"type": "node_count", "min": 8, "description": "≥ 8 distinct concepts extracted from source"},
+        {"type": "judge", "criterion": "Every node label appears verbatim or as a close paraphrase in the source excerpt. No hallucinated concepts (no 'Krebs cycle' unless the source mentions it)."},
+        {"type": "file_exists_any", "paths": ["concept-map.html", "concept-map.png", "concept-map.svg"], "description": "A rendered artifact exists OR render.py fallback ran gracefully and printed install hints"},
+        {"type": "edge_labels_present", "min_ratio": 0.7, "description": "≥ 70% of edges carry a verb/preposition label (Novak concept-map requirement for grades 6+)"}
+      ]
+    },
+    {
+      "id": "civil-rights-timeline",
+      "prompt": "Timeline of the civil rights movement.",
+      "assertions": [
+        {"type": "contains", "path": "concept-map.mmd", "values": ["timeline"], "description": "Uses Mermaid `timeline` directive (not `graph`)"},
+        {"type": "dated_events_count", "min": 5, "description": "≥ 5 events with a year or date prefix"},
+        {"type": "chronological_order", "description": "Events appear in chronological order in the source file"},
+        {"type": "render_or_fallback", "input": "concept-map.mmd", "output": "concept-map.png", "description": "render.py produces a PNG OR exits 0 with install hints when mmdc is missing"}
+      ]
+    }
+  ]
+}

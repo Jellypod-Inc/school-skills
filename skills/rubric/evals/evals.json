@@ -1,0 +1,70 @@
+{
+  "skill": "rubric",
+  "version": "V1beta",
+  "notes": "PDF output is deferred to a later update; assertions target markdown + CSV only.",
+  "evals": [
+    {
+      "id": "rubric-01-persuasive-essay-dok",
+      "prompt": "Make a rubric for a 9th grade persuasive essay on climate policy, aligned to DOK, 4 criteria, 4 levels, 100 points.",
+      "assertions": [
+        {"type": "file_exists", "glob": "./rubric-*.md"},
+        {"type": "file_exists", "glob": "./rubric-*.csv"},
+        {"type": "markdown_table_shape", "file_glob": "./rubric-*.md", "criteria_rows": 4, "level_cols": 4, "note": "exactly 4 criteria rows and 4 level columns (plus 1 criterion column)"},
+        {"type": "no_empty_cells", "file_glob": "./rubric-*.md", "note": "every criterion x level cell is non-empty"},
+        {"type": "regex_match_each_row", "file_glob": "./rubric-*.md", "pattern": "DOK\\s*[1-4]", "scope": "criterion_column", "note": "every criterion row carries a DOK n tag"},
+        {"type": "points_sum", "file_glob": "./rubric-*.csv", "column": "criterion_total", "expected": 100, "tolerance": 0}
+      ]
+    },
+    {
+      "id": "rubric-02-elementary-self-portrait",
+      "prompt": "1st grade rubric for drawing a self-portrait; 3 levels; no points.",
+      "assertions": [
+        {"type": "markdown_table_shape", "file_glob": "./rubric-*.md", "level_cols": 3, "note": "exactly 3 level columns"},
+        {"type": "no_numeric_scores", "file_glob": "./rubric-*.md", "note": "no integer point values appear in any cell"},
+        {"type": "cell_max_words", "file_glob": "./rubric-*.md", "max_words": 8, "scope": "descriptor_cells"},
+        {"type": "regex_match_any_cell", "file_glob": "./rubric-*.md", "pattern": "^I can\\b", "note": "at least one cell uses 'I can' phrasing"},
+        {"type": "no_empty_cells", "file_glob": "./rubric-*.md"}
+      ]
+    },
+    {
+      "id": "rubric-03-ap-bio-lab-report",
+      "prompt": "Analytic rubric for an AP Biology lab report on enzyme kinetics, aligned to NGSS practices, 5 criteria, 4 levels.",
+      "assertions": [
+        {"type": "markdown_table_shape", "file_glob": "./rubric-*.md", "criteria_rows": 5, "level_cols": 4},
+        {"type": "populated_cell_count", "file_glob": "./rubric-*.md", "expected": 20, "note": "5 criteria x 4 levels = 20 descriptor cells, all non-empty"},
+        {"type": "regex_count", "file_glob": "./rubric-*.md", "pattern": "SEP\\s*[1-8]", "min": 3, "note": "at least 3 distinct NGSS SEP codes referenced"},
+        {"type": "monotonic_points_per_row", "file_glob": "./rubric-*.csv", "direction": "non_decreasing", "note": "within each criterion row, level_1_points <= level_2_points <= level_3_points <= level_4_points"},
+        {"type": "csv_parses", "file_glob": "./rubric-*.csv"}
+      ]
+    },
+    {
+      "id": "rubric-04-group-project",
+      "prompt": "Rubric for a 7th grade group project on a historical figure; include individual contribution.",
+      "assertions": [
+        {"type": "criterion_name_contains", "file_glob": "./rubric-*.md", "needle": "Individual Contribution", "case_sensitive": false},
+        {"type": "criterion_name_matches_any", "file_glob": "./rubric-*.md", "patterns": ["Collaboration", "Teamwork", "Group Work"], "case_sensitive": false, "note": "at least one criterion addresses teamwork/collaboration"},
+        {"type": "file_exists_any", "globs": ["./rubric-*-teacher.md", "./rubric-*.md"], "note": "teacher version exists"},
+        {"type": "distinct_versions_offered", "note": "skill offers or produces both teacher-facing and student-facing versions on request"}
+      ]
+    },
+    {
+      "id": "rubric-05-college-cs-coding-project",
+      "prompt": "Rubric for a college intro-CS final project (Python), 4 criteria, 5 levels, 100 points.",
+      "assertions": [
+        {"type": "markdown_table_shape", "file_glob": "./rubric-*.md", "criteria_rows": 4, "level_cols": 5},
+        {"type": "criterion_names_cover", "file_glob": "./rubric-*.md", "concepts": ["correctness", "code quality", "documentation", "design", "testing"], "min_matches": 4, "synonyms_allowed": true, "note": "criteria collectively cover correctness, code quality, and at least two of {documentation, design, testing}"},
+        {"type": "points_sum", "file_glob": "./rubric-*.csv", "column": "criterion_total", "expected": 100, "tolerance": 0},
+        {"type": "regex_match_each_row", "file_glob": "./rubric-*.md", "pattern": "Bloom'?s\\s*[1-6]", "scope": "criterion_column", "note": "every criterion row carries a Bloom's level tag"},
+        {"type": "csv_parses", "file_glob": "./rubric-*.csv"}
+      ]
+    }
+  ],
+  "global_assertions": [
+    {"type": "no_empty_cells_any", "file_glob": "./rubric-*.md", "note": "No rubric cell may be blank, 'TBD', or the literal string 'same as above'"},
+    {"type": "no_repeated_neighbor_cells", "file_glob": "./rubric-*.md", "note": "Adjacent level cells within a row must not be verbatim copies of each other"},
+    {"type": "csv_parses", "file_glob": "./rubric-*.csv", "note": "CSV is well-formed and parses via stdlib csv module"},
+    {"type": "point_arithmetic_reconciles", "file_glob": "./rubric-*.csv", "note": "when points are emitted: criterion_total == max level points per row; overall total points == sum of criterion_totals"},
+    {"type": "criteria_count_in_range", "file_glob": "./rubric-*.md", "min": 3, "max": 6, "note": "rater-reliability cap: 3-6 criteria, inclusive"},
+    {"type": "levels_count_in_range", "file_glob": "./rubric-*.md", "min": 3, "max": 5, "note": "3-5 performance levels"}
+  ]
+}

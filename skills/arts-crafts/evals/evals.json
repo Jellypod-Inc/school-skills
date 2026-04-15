@@ -1,0 +1,66 @@
+{
+  "skill": "arts-crafts",
+  "evals": [
+    {
+      "id": "fall-leaves-prek",
+      "prompt": "craft for pre-k about fall leaves",
+      "assertions": [
+        {"type": "contains_all_sections", "sections": ["Project Name", "Age Range", "Time", "Skill Level", "Mess Level", "Supply List", "Step-by-Step Instructions", "Safety Notes", "Variations", "Cleanup", "Learning Connections"]},
+        {"type": "age_range_includes", "band": "2-4"},
+        {"type": "supply_list_non_empty"},
+        {"type": "no_unsupervised_scissors_for_age", "max_age": 4},
+        {"type": "safety_notes_non_empty"}
+      ]
+    },
+    {
+      "id": "thanksgiving-no-scissors",
+      "prompt": "thanksgiving class craft for 2nd grade, no scissors",
+      "assertions": [
+        {"type": "instructions_contain_none_of", "phrases": ["cut with scissors", "use scissors", "cut out with scissors", "snip with scissors"]},
+        {"type": "group_size_guidance_for_minimum", "min_students": 20},
+        {"type": "mess_level_stated"},
+        {"type": "prep_time_stated"},
+        {"type": "contains_all_sections"}
+      ]
+    },
+    {
+      "id": "construction-paper-and-glue-only",
+      "prompt": "craft using only construction paper and glue",
+      "assertions": [
+        {"type": "supply_list_subset_of", "allowed": ["construction paper", "glue", "glue stick", "white glue", "pencil", "marker"]},
+        {"type": "instructions_achievable_with_supplies"},
+        {"type": "cleanup_tips_match_dry_materials"},
+        {"type": "contains_all_sections"}
+      ]
+    },
+    {
+      "id": "simple-paper-craft-5yo",
+      "prompt": "simple paper craft I can do with my 5 year old",
+      "assertions": [
+        {"type": "age_range_includes", "band": "5-7"},
+        {"type": "instruction_count_at_most", "n": 8},
+        {"type": "contains_italicized_visual_cues"},
+        {"type": "reading_level_at_most_grade", "grade": 3},
+        {"type": "contains_all_sections"}
+      ]
+    },
+    {
+      "id": "earth-day-recycled-3rd",
+      "prompt": "earth day classroom craft, recycled materials, 3rd grade",
+      "assertions": [
+        {"type": "supply_list_contains_any_of", "items": ["cardboard", "cereal box", "toilet paper roll", "toilet-paper tube", "newspaper", "egg carton", "bottle cap", "paper bag", "magazine"]},
+        {"type": "learning_connection_mentions", "keywords": ["environment", "recycle", "Earth", "sustainability", "reuse", "upcycle"]},
+        {"type": "age_range_includes", "band": "8-10"},
+        {"type": "variations_section_non_empty"},
+        {"type": "contains_all_sections"}
+      ]
+    }
+  ],
+  "global_assertions": [
+    {"type": "safety_notes_non_empty"},
+    {"type": "contains_all_sections"},
+    {"type": "no_copyrighted_character_names", "blocklist": ["Elsa", "Anna", "Bluey", "Mickey", "Minnie", "Pikachu", "Spider-Man", "Batman", "Paw Patrol", "Frozen"]},
+    {"type": "mess_level_stated"},
+    {"type": "supply_substitutions_included"}
+  ]
+}

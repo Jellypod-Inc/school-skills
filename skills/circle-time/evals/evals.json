@@ -1,0 +1,62 @@
+{
+  "skill": "circle-time",
+  "description": "Five end-to-end prompts covering age bands, themes, durations, and accommodations.",
+  "evals": [
+    {
+      "id": "prek-apples-15",
+      "prompt": "PreK circle time about apples, 15 minutes",
+      "assertions": [
+        { "type": "section_present", "sections": ["greeting", "song", "discussion", "movement", "story", "sel", "closing"] },
+        { "type": "duration_within", "target_minutes": 15, "tolerance_minutes": 2 },
+        { "type": "song_has_tune_attribution", "match": "to the tune of" },
+        { "type": "song_has_original_lyrics_minimum_lines", "min_lines": 4 },
+        { "type": "book_has_title_and_author", "alternative_required": true },
+        { "type": "age_language_heuristic", "max_words_per_sentence": 9 }
+      ]
+    },
+    {
+      "id": "k-feelings-20-calendar",
+      "prompt": "Kindergarten morning meeting about feelings, 20 min, include calendar",
+      "assertions": [
+        { "type": "section_present", "sections": ["greeting", "song", "calendar", "discussion", "movement", "story", "sel", "closing"] },
+        { "type": "duration_within", "target_minutes": 20, "tolerance_minutes": 2 },
+        { "type": "sel_checkin_protocol_named", "protocols": ["thumbs", "colors", "feelings wheel"] },
+        { "type": "book_has_title_and_author", "alternative_required": true },
+        { "type": "song_has_tune_attribution", "match": "to the tune of" }
+      ]
+    },
+    {
+      "id": "first-grade-letter-b-10",
+      "prompt": "1st grade circle time for letter B, 10 minutes",
+      "assertions": [
+        { "type": "section_present", "sections": ["greeting", "song", "discussion", "movement", "story", "sel", "closing"] },
+        { "type": "duration_within", "target_minutes": 10, "tolerance_minutes": 2 },
+        { "type": "theme_vocabulary_present", "letter": "B", "min_b_words": 3 },
+        { "type": "song_has_original_lyrics_minimum_lines", "min_lines": 4 },
+        { "type": "book_has_title_and_author", "alternative_required": true }
+      ]
+    },
+    {
+      "id": "2nd-grade-kindness-sel-15",
+      "prompt": "2nd grade morning meeting SEL check-in about kindness, 15 minutes",
+      "assertions": [
+        { "type": "section_present", "sections": ["greeting", "song", "discussion", "movement", "story", "sel", "closing"] },
+        { "type": "duration_within", "target_minutes": 15, "tolerance_minutes": 2 },
+        { "type": "sel_checkin_protocol_named", "protocols": ["thumbs", "colors", "feelings wheel", "one-word share"] },
+        { "type": "discussion_has_reflective_question", "keywords": ["proud", "felt", "remember", "time when", "kind"] },
+        { "type": "book_has_title_and_author", "alternative_required": true }
+      ]
+    },
+    {
+      "id": "prek-rainy-sensory",
+      "prompt": "PreK circle time, rainy indoor day, small group, one child with sensory sensitivities",
+      "assertions": [
+        { "type": "section_present", "sections": ["greeting", "song", "discussion", "movement", "story", "sel", "closing"] },
+        { "type": "duration_within", "target_minutes": 15, "tolerance_minutes": 2 },
+        { "type": "accommodation_mentioned", "keywords": ["sensory", "quiet", "visual cue", "soft", "seated"] },
+        { "type": "no_outdoor_activities" },
+        { "type": "movement_is_finger_play_or_seated" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "skill": "lecture-to-study-guide",
+  "evals": [
+    {
+      "id": "mitosis-prose-9to12",
+      "prompt": "Please turn my lecture notes into a study guide. I'm in 10th-grade biology and have an exam on cell division. [Attached: ~1500-word typed lecture notes on mitosis covering prophase, metaphase, anaphase, telophase, cytokinesis, chromatids, centromere, and the spindle apparatus, with bolded key terms.]",
+      "source_type": "pasted prose notes",
+      "level": "9-12",
+      "assertions": [
+        {"type": "section_present", "names": ["Outline", "Key Terms", "Concept Summaries", "Diagrams", "Worked Examples", "Practice Questions", "Cheat Sheet"]},
+        {"type": "term_count_gte", "value": 8},
+        {"type": "terms_include_all", "terms": ["prophase", "metaphase", "anaphase", "telophase", "cytokinesis", "chromatid", "centromere", "spindle"]},
+        {"type": "practice_question_count_gte", "value": 10},
+        {"type": "mermaid_block_count_gte", "value": 1},
+        {"type": "cheat_sheet_word_count_lte", "value": 700},
+        {"type": "no_sibling_skill_auto_invocation", "skills": ["flashcards", "concept-map", "quiz-generator"]}
+      ]
+    },
+    {
+      "id": "econ-slide-deck-college",
+      "prompt": "Here are my econ lecture slides on supply and demand (25 slides, PDF). Make me a study guide for the midterm. I'm in intro microeconomics, college level. The deck covers market definition, law of supply, law of demand, shifts, equilibrium price, surplus/shortage, elasticity, price ceilings/floors, taxes/subsidies, and a numeric worked example (Qd = 100 − 2P, Qs = 20 + 2P).",
+      "source_type": "slide-deck PDF",
+      "level": "college",
+      "assertions": [
+        {"type": "section_present", "names": ["Outline", "Key Terms", "Concept Summaries", "Diagrams", "Worked Examples", "Practice Questions", "Cheat Sheet"]},
+        {"type": "toc_matches_source_slide_titles_pct_gte", "value": 80},
+        {"type": "term_count_gte", "value": 10},
+        {"type": "worked_example_count_gte", "value": 1},
+        {"type": "worked_example_contains_numeric_solution", "value": true},
+        {"type": "application_question_count_gte", "value": 2},
+        {"type": "cheat_sheet_word_count_lte", "value": 500}
+      ]
+    },
+    {
+      "id": "dp-transcript-college",
+      "prompt": "I have a plaintext transcript from my CS lecture on dynamic programming (no speaker labels, ~3000 words, with timestamps and auto-caption fragmentation and filler words like 'um' and 'you know'). Clean it up and make me a study guide — I need to review for tomorrow. College-level CS course. Content covers memoization, tabulation, Fibonacci, longest common subsequence, and 0/1 knapsack.",
+      "source_type": "transcript",
+      "level": "college",
+      "assertions": [
+        {"type": "section_present", "names": ["Outline", "Key Terms", "Concept Summaries", "Diagrams", "Worked Examples", "Practice Questions", "Cheat Sheet"]},
+        {"type": "worked_example_count_gte", "value": 2},
+        {"type": "practice_question_count_gte", "value": 12},
+        {"type": "no_timestamp_noise_in_prose", "value": true},
+        {"type": "no_filler_words_in_prose", "words": ["um", "uh", "you know"]},
+        {"type": "terms_include_all", "terms": ["memoization", "tabulation"]}
+      ]
+    },
+    {
+      "id": "multi-lecture-psych",
+      "prompt": "Here are my intro-psych lecture notes from weeks 1, 2, and 3 (three separate markdown files). Combine them into one study guide for the first exam. College level. Week 1: history and schools of psychology. Week 2: research methods. Week 3: biological bases (neurons, synapse, neurotransmitters).",
+      "source_type": "multi-lecture series",
+      "level": "college",
+      "assertions": [
+        {"type": "toc_contains_topics_from_all_sources", "min_sources": 3},
+        {"type": "key_terms_deduplicated", "value": true},
+        {"type": "practice_questions_per_source_gte", "value": 3, "min_sources": 3},
+        {"type": "section_present", "names": ["Outline", "Key Terms", "Concept Summaries", "Practice Questions", "Cheat Sheet"]}
+      ]
+    },
+    {
+      "id": "linalg-eigen-grad",
+      "prompt": "Here are my linear algebra notes on eigenvalues and eigenvectors. I'm in a graduate-level class — make me a dense study guide. Notes cover Av = λv, characteristic polynomial det(A − λI) = 0, a 2×2 worked example, diagonalization, and the spectral theorem for symmetric matrices.",
+      "source_type": "pasted prose notes",
+      "level": "graduate",
+      "assertions": [
+        {"type": "worked_example_includes_step_by_step_derivation", "min_steps": 3},
+        {"type": "latex_math_used", "value": true},
+        {"type": "cheat_sheet_formula_count_gte", "value": 3},
+        {"type": "application_question_pct_gte", "value": 40},
+        {"type": "terms_include_all", "terms": ["eigenvalue", "eigenvector", "characteristic polynomial", "diagonalizable"]},
+        {"type": "cheat_sheet_word_count_lte", "value": 500}
+      ]
+    }
+  ]
+}

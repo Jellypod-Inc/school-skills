@@ -1,0 +1,29 @@
+{
+  "name": "school-skills",
+  "owner": {
+    "name": "Jellypod",
+    "email": "contact@jellypod.com"
+  },
+  "metadata": {
+    "description": "Classroom-ready Claude Code skills for education.",
+    "version": "0.1.0-alpha.2"
+  },
+  "plugins": [
+    {
+      "name": "school-skills",
+      "source": "./",
+      "description": "Classroom-ready skills for education: lesson planning, Socratic tutoring, circle-time, rubrics, arts & crafts, study guides, and concept maps.",
+      "version": "0.1.0-alpha.2",
+      "author": {
+        "name": "Jellypod",
+        "email": "contact@jellypod.com"
+      },
+      "homepage": "https://github.com/jellypod/school-skills",
+      "repository": "https://github.com/jellypod/school-skills",
+      "license": "MIT",
+      "keywords": ["education", "teachers", "students", "classroom", "tutoring"],
+      "category": "education",
+      "tags": ["education", "teachers", "k12", "tutoring", "lesson-planning"]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "skill": "lesson-plan",
+  "version": "0.1.0",
+  "judge_model": "claude-opus-4-6",
+  "cases": [
+    {
+      "id": "ngss-photosynthesis-7th",
+      "prompt": "Write a 45-min 7th grade NGSS lesson on photosynthesis.",
+      "assertions": [
+        {"type": "contains_all", "values": ["Learning Objectives", "Standards Alignment", "Hook", "Direct Instruction", "Guided Practice", "Independent Practice", "Formative Assessment", "Closure", "Differentiation", "ELL", "SPED", "Gifted", "Materials", "Teacher Notes"]},
+        {"type": "regex", "pattern": "MS-LS1-[0-9]+", "description": "Cites an NGSS MS-LS1 performance expectation code"},
+        {"type": "contains_all", "values": ["ELL", "SPED", "Gifted"], "scope": "section:Differentiation"},
+        {"type": "section_nonempty", "section": "Materials"},
+        {"type": "judge", "criterion": "All stated objectives use measurable Bloom's verbs (analyze, model, explain, compare, justify, etc.). No objective relies solely on 'understand', 'know', or 'learn about'."}
+      ]
+    },
+    {
+      "id": "ccss-ela-theme-9th",
+      "prompt": "Common Core ELA lesson on theme for 9th grade, 50 minutes.",
+      "assertions": [
+        {"type": "regex", "pattern": "CCSS\\.ELA-LITERACY\\.RL\\.9-10\\.[1-9]", "description": "Cites a CCSS ELA RL.9-10 standard"},
+        {"type": "section_nonempty", "section": "Hook"},
+        {"type": "section_nonempty", "section": "Formative Assessment"},
+        {"type": "contains_any", "values": ["exit ticket", "exit criteria", "success criteria"], "scope": "section:Independent Practice"},
+        {"type": "judge", "criterion": "The hook is topic-relevant (mentions theme, story, character, or text) and not a generic icebreaker."}
+      ]
+    },
+    {
+      "id": "kindergarten-shapes-20min",
+      "prompt": "Kindergarten lesson on shapes, 20 minutes.",
+      "assertions": [
+        {"type": "max_section_minutes", "value": 8, "description": "No single activity block exceeds 8 minutes of seat time"},
+        {"type": "contains_any", "values": ["song", "movement", "manipulative", "manipulatives", "dance", "sort", "touch"], "description": "Uses age-appropriate modality"},
+        {"type": "not_contains_in_section", "section": "Homework", "values": ["worksheet", "practice problems", "written homework"]},
+        {"type": "judge", "criterion": "Vocabulary is Tier-1 and kindergarten-appropriate. No academic jargon that a 5-year-old could not understand."}
+      ]
+    },
+    {
+      "id": "emergency-sub-plan-6th",
+      "prompt": "Emergency sub plan for 6th grade social studies, 50 minutes.",
+      "assertions": [
+        {"type": "contains_all", "values": ["Substitute", "Behavior", "Management"], "description": "Uses sub-plan template with behavior notes"},
+        {"type": "section_nonempty", "section": "Behavior / Management"},
+        {"type": "not_contains", "values": ["see previous lesson", "continue from yesterday", "as we discussed"], "description": "Self-contained; no prior-teacher context required"},
+        {"type": "judge", "criterion": "Materials are low-tech and printable-only — no required projector, computer cart, or specialty equipment."}
+      ]
+    },
+    {
+      "id": "multi-day-unit-am-rev-8th",
+      "prompt": "Multi-day unit on the American Revolution, 8th grade, 5 days x 50 min.",
+      "assertions": [
+        {"type": "contains_all", "values": ["Unit Overview", "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Summative Assessment"]},
+        {"type": "distinct_objectives_per_day", "min_days": 5, "description": "Each of the 5 days has at least one distinct objective"},
+        {"type": "regex", "pattern": "(CCSS\\.ELA-LITERACY\\.(RH|WHST)\\.6-8\\.[0-9]+|D2\\.His)", "description": "Cites CCSS literacy-in-history or C3 history standard at unit level"},
+        {"type": "section_nonempty", "section": "Summative Assessment"},
+        {"type": "judge", "criterion": "The five days form a coherent arc: hook/context -> content exploration -> synthesis -> assessment. Not five disconnected lessons."}
+      ]
+    }
+  ]
+}
